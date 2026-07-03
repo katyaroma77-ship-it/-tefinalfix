@@ -4,6 +4,7 @@
   "description": "Blog for Swiss Center Services AG with custom backend",
   "main": "backend/server.js",
   "scripts": {
+    "build": "node -e \"require('./backend/utils/exportPosts').exportPostsToJson()\"",
     "dev": "node backend/server.js",
     "start": "node backend/server.js"
   },
