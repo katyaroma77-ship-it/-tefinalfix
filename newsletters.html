@@ -1,0 +1,16 @@
+<div id="newsletter-list"></div>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+  fetch("/newsletters/index.json")
+    .then(r => r.json())
+    .then(items => {
+      const el = document.getElementById("newsletter-list");
+      el.innerHTML = items.map(n => `
+        <article>
+          <h2>${n.title}</h2>
+          <p><em>${new Date(n.date).toLocaleDateString()}</em></p>
+          <div>${marked.parse(n.body)}</div>
+        </article>
+      `).join("<hr>");
+    });
+</script>
